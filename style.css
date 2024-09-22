@@ -1,0 +1,39 @@
+:root{
+    --header-color: lightblue;
+}
+
+html, body, :root, .primary-container{
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.primary-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 1fr;
+}
+
+.header-container{
+    background-color: var(--header-color);
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.header-title{
+    padding: 25px;
+    font-weight: bolder;
+    font-size: 32px;
+    grid-column: 1 / 4;
+    text-align: center;
+}
+
+.header-button-container{
+    grid-column: 1 / 4;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
