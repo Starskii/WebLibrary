@@ -68,10 +68,13 @@ html, body, :root, .primary-container{
     right: 25%;
     max-width: fit-content;
     min-width: fit-content;
+    animation: fade 2s linear;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
 }
 
 .hidden{
     visibility: hidden;    
+    animation: fade 2s linear;
 }
 
 .modal-title-container{

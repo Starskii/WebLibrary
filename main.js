@@ -1,5 +1,10 @@
 const myLibrary = [];
 
+const addBookBtn = document.getElementById("add-book");
+const exitModalBtn = document.getElementById("exit-button");
+const cancelModalBtn = document.getElementById("cancel-button");
+const saveModalBtn = document.getElementById("save-button");
+
 const modal = document.querySelector(".book-input-modal");
 
 function Book(title, author, pages, hasRead){
@@ -25,9 +30,10 @@ function onCancelButtonPressed(e){
     modal.classList.add("hidden"); 
 }
 
-const addBookBtn = document.getElementById("add-book");
-const exitModalBtn = document.getElementById("exit-button");
-const cancelModalBtn = document.getElementById("cancel-button");
+function onSaveButtonPressed(e){
+
+}
+
 addBookBtn.addEventListener("click", onAddBookButtonPressed);
 exitModalBtn.addEventListener("click", onCancelButtonPressed);
 cancelModalBtn.addEventListener("click", onCancelButtonPressed);
