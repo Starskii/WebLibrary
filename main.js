@@ -20,6 +20,7 @@ function Book(title, author, pages, hasRead){
 }
 
 function addBookToLibrary(book) {
+    createBookHTML(book);
     myLibrary.push(book);
 }
 
@@ -38,7 +39,21 @@ function onSaveButtonPressed(e){
     const hasRead = document.getElementById("read-input");
 
     const newBook = new Book(title.value, author.value, pageCount.value, hasRead.checked);
-    createBookHTML(newBook);
+    addBookToLibrary(newBook);
+    clearInputModal();
+    onCancelButtonPressed();
+}
+
+function clearInputModal(){
+    const title = document.getElementById("title-input");
+    const author = document.getElementById("author-input");
+    const pageCount = document.getElementById("pages-input");
+    const hasRead = document.getElementById("read-input");
+
+    title.value = "";
+    author.value = "";
+    pageCount.value = null;
+    hasRead.checked = false;
 }
 
 function createBookHTML(book){
@@ -68,11 +83,42 @@ function createBookHTML(book){
     contentContainer.appendChild(bookCard);
 }
 
+function createSampleBooks(){
+    sampleTitles = [
+        "How I Met Your Mother",
+        "I Will Walk 500 Miles",
+        "Getting Yoked"
+    ]
+    sampleAuthors = [
+        "Bernie Sanders",
+        "Robert Plant",
+        "Abroham Lincoln"
+    ]
+    samplePages = [
+        248,
+        355,
+        859
+    ]
+    sampleRead = [
+        true,
+        false,
+        true
+    ]
+
+    for(let i = 0; i < 3; i++){
+        const book = new Book(
+            sampleTitles[i], 
+            sampleAuthors[i], 
+            samplePages[i], 
+            sampleRead[i]
+        );
+        addBookToLibrary(book);
+    }
+}
+
 addBookBtn.addEventListener("click", onAddBookButtonPressed);
 exitModalBtn.addEventListener("click", onCancelButtonPressed);
 cancelModalBtn.addEventListener("click", onCancelButtonPressed);
 saveModalBtn.addEventListener("click", onSaveButtonPressed);
 
-const myBook = new Book("a", "a", 100, false);
-addBookToLibrary(myBook);
-console.log(myLibrary);
+createSampleBooks();
