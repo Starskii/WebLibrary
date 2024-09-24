@@ -62,9 +62,9 @@ function clearInputModal(){
 }
 
 function createBookHTML(book){
-    const formattedTitle = `${book.title}` 
+    const formattedTitle = `"${book.title}"` 
     const formattedAuthor = `By ${book.author}`; 
-    const formattedPageCount = `Totalling ${book.pageCount} pages`; 
+    const formattedPageCount = `Totalling ${book.pages} pages`; 
     const formattedHasRead = `${book.hasRead ? "Read" : "Unread"}`;
 
     const bookCard = document.createElement('div');
