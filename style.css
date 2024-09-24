@@ -52,6 +52,25 @@ html, body, :root, .primary-container{
     border: 1px solid black;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
     height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.book-card>.book-title{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.book-card>.autho-author{
+
+}
+.book-card>.book-page-count{
+    
+}
+.book-card>.book-has-read{
+    
 }
 
 .book-input-modal{
