@@ -20,8 +20,61 @@ function Book(title, author, pages, hasRead){
 }
 
 function addBookToLibrary(book) {
-    createBookHTML(book);
     myLibrary.push(book);
+    updateLibraryUI();
+}
+
+function removeBookFromLibrary(e){
+    console.log(Number.parseInt(e.target.dataset["bookIndex"]));
+    myLibrary.splice(Number.parseInt(e.target.dataset["bookIndex"]), 1);
+    updateLibraryUI();
+}
+
+function createBookHTML(book, index){
+    const formattedTitle = `"${book.title}"` 
+    const formattedAuthor = `By ${book.author}`; 
+    const formattedPageCount = `Totalling ${book.pages} pages`; 
+    const formattedHasRead = `${book.hasRead ? "Read" : "Unread"}`;
+
+    const bookCard = document.createElement('div');
+    bookCard.className = "book-card";
+
+    const bookTitle = document.createElement('div');
+    bookTitle.className = "book-title";
+    bookTitle.innerText = formattedTitle;
+    bookCard.appendChild(bookTitle);
+
+    const bookAuthor = document.createElement('div');
+    bookAuthor.className = "book-author";
+    bookAuthor.innerText = formattedAuthor;
+    bookCard.appendChild(bookAuthor);
+
+    const bookPages = document.createElement('div');
+    bookPages.className = "book-page-count";
+    bookPages.innerText = formattedPageCount;
+    bookCard.appendChild(bookPages);
+
+    const bookHasRead = document.createElement('div');
+    bookHasRead.className = "book-has-read";
+    bookHasRead.innerText = formattedHasRead;
+    bookCard.appendChild(bookHasRead);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.innerHTML = "DELETE";
+    deleteButton.setAttribute("data-book-index", index);
+    deleteButton.addEventListener("click", removeBookFromLibrary);
+    bookCard.appendChild(deleteButton);
+
+    return bookCard;
+}
+
+function updateLibraryUI(){
+    contentContainer.innerHTML = "";
+    let index = 0;
+    myLibrary.forEach((book) => {
+        contentContainer.appendChild(createBookHTML(book, index));
+        index += 1;
+    });
 }
 
 function onAddBookButtonPressed(e){
@@ -59,38 +112,6 @@ function clearInputModal(){
     author.value = "";
     pageCount.value = null;
     hasRead.checked = false;
-}
-
-function createBookHTML(book){
-    const formattedTitle = `"${book.title}"` 
-    const formattedAuthor = `By ${book.author}`; 
-    const formattedPageCount = `Totalling ${book.pages} pages`; 
-    const formattedHasRead = `${book.hasRead ? "Read" : "Unread"}`;
-
-    const bookCard = document.createElement('div');
-    bookCard.className = "book-card";
-
-    const bookTitle = document.createElement('div');
-    bookTitle.className = "book-title";
-    bookTitle.innerText = formattedTitle;
-    bookCard.appendChild(bookTitle);
-
-    const bookAuthor = document.createElement('div');
-    bookAuthor.className = "book-author";
-    bookAuthor.innerText = formattedAuthor;
-    bookCard.appendChild(bookAuthor);
-
-    const bookPages = document.createElement('div');
-    bookPages.className = "book-page-count";
-    bookPages.innerText = formattedPageCount;
-    bookCard.appendChild(bookPages);
-
-    const bookHasRead = document.createElement('div');
-    bookHasRead.className = "book-has-read";
-    bookHasRead.innerText = formattedHasRead;
-    bookCard.appendChild(bookHasRead);
-
-    contentContainer.appendChild(bookCard);
 }
 
 function createSampleBooks(){
