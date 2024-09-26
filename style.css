@@ -74,6 +74,12 @@ html, body, :root, .primary-container{
     
 }
 
+.button-container{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
 .book-input-modal{
     position: absolute;
     display: flex;
